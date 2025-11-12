@@ -1,33 +1,73 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# ==== OS / IDE ====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
 *.iml
 *.ipr
+*.iws
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
+# ==== Git ====
+*.orig
+
+# ==== Java / Spring (monorepo-aware) ====
+**/target/
+**/build/
+**/out/
+**/*.log
+**/*.tmp
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+hs_err_pid*
+replay_pid*
+**/.mvn/wrapper/maven-wrapper.jar
+
+# Keep build dirs inside src if you ever generate there (rare)
+!**/src/main/**/target/
+!**/src/test/**/target/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+# ==== Maven / Gradle ====
+**/.mvn/
+**/.gradle/
+.settings/
+
+# ==== Node / Next.js / React Native ====
+**/node_modules/
+**/.next/
+**/dist/
+**/.expo/
+**/web-build/
+npm-debug.log*
+yarn-error.log
+pnpm-lock.yaml
+bun.lockb
+
+# ==== Env & Secrets (IMPORTANT) ====
+*.env
+*.env.local
+*.env.*.local
+**/application.properties
+**/application.yml
+
+# If you keep example configs, do NOT ignore them:
+!**/*example.properties
+!**/*.example
+!**/*.env.example
+
+# ==== Android (RN) ====
+**/android/.gradle/
+**/android/app/build/
+**/android/build/
+**/android/local.properties
+*.keystore
+*.jks
+
+# ==== iOS (RN) ====
+**/ios/Pods/
+**/ios/build/
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/
