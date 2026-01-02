@@ -1,0 +1,19 @@
+# =====================
+# Backend (Spring Boot)
+# =====================
+cloudmenu-backend/target/
+cloudmenu-backend/uploads/
+cloudmenu-backend/.env
+cloudmenu-backend/application.properties
+
+# =====================
+# Frontend (Next.js)
+# =====================
+cloudmenu-web/node_modules/
+cloudmenu-web/.next/
+cloudmenu-web/.env*
+
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
