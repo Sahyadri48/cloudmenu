@@ -1,48 +1,36 @@
-# ==========================
+# ========================
 # Backend (Spring Boot)
-# ==========================
+# ========================
 cloudmenu-backend/target/
 cloudmenu-backend/uploads/
 cloudmenu-backend/.env
 cloudmenu-backend/application.properties
-cloudmenu-backend/.classpath
-cloudmenu-backend/.project
-cloudmenu-backend/.settings/
 
-# ==========================
+# ========================
 # Frontend (Next.js)
-# ==========================
+# ========================
 cloudmenu-web/node_modules/
 cloudmenu-web/.next/
 cloudmenu-web/.env*
-cloudmenu-web/out/
 
-# ==========================
+# ========================
 # Mobile (Expo / React Native)
-# ==========================
+# ========================
 cloudmenu-mobile/node_modules/
 cloudmenu-mobile/.expo/
-cloudmenu-mobile/.env
-cloudmenu-mobile/dist/
-cloudmenu-mobile/web-build/
+cloudmenu-mobile/.env*
 
-# ==========================
-# Logs
-# ==========================
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# ==========================
+# ========================
 # OS / Editor
-# ==========================
+# ========================
 .DS_Store
-Thumbs.db
 .vscode/
 .idea/
 
-# ==========================
-# Git
-# ==========================
-*.log
+# ========================
+# Logs
+# ========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
