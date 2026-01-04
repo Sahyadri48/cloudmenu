@@ -1,162 +1,225 @@
-🍽️ CloudMenu
+🍽️ CloudMenu – QR-Based Restaurant Ordering System
 
-CloudMenu is a full-stack, QR-based restaurant ordering and management system designed to simplify in-restaurant ordering, billing, and live order tracking.
-Customers can scan a QR code to view the menu and place orders, while restaurant owners manage orders, menus, and analytics through an admin dashboard.
+CloudMenu is a full-stack, QR-based restaurant ordering and management system built to modernize in-restaurant ordering.
+Customers scan a QR code to view the menu and place orders from their mobile phones, while restaurant owners manage menus, orders, and analytics via a web dashboard and backend services.
+This project is built as a monorepo containing backend, web, and mobile applications.
 
-✨ Key Features
-👥 Customer Side
-
-Scan QR code to access the menu
-
-Browse menu items with add-ons
-
-Place orders without installing an app
-
-Live order status updates
-
-Seamless in-restaurant experience
-
-🧑‍🍳 Restaurant / Admin Side
-
-Secure authentication & role-based access
-
-Menu and category management
-
-Live order tracking (real-time updates)
-
-Billing and order history
-
-Analytics dashboard (sales, popular items, trends)
-
-Subscription & upgrade flow
-🏗️ Project Structure (Monorepo)
-cloudmenu/
-├── cloudmenu-backend/   # Spring Boot backend
-│   ├── src/
-│   ├── pom.xml
-│   ├── mvnw
-│   └── mvnw.cmd
-│
-├── cloudmenu-web/       # Next.js frontend
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   ├── public/
-│   └── package.json
-│
-└── .gitignore
-
-🛠️ Tech Stack
+🚀 Tech Stack
 Backend
 
 Java 17
-
 Spring Boot
-
-Spring Security + JWT
-
-Spring Data JPA
-
+Spring Data JPA (Hibernate)
 MySQL
-
 REST APIs
-
-SSE / WebSocket (real-time updates)
-
-Frontend
-
-Next.js (App Router)
-
+Web (Admin Dashboard)
+Next.js
+React
 TypeScript
-
 Tailwind CSS
+Axios
+Mobile (Customer App)
+React Native
+Expo
+TypeScript
+Redux Toolkit
+Expo Router
+Tools & IDEs
+VS Code
+Git & GitHub
+MySQL Workbench / CLI
+Maven
+npm / Node.js
 
-React Server Components
+📁 Monorepo Folder Structure
+cloudmenu/
+├── cloudmenu-backend/       # Spring Boot backend
+│   ├── src/main/java
+│   ├── src/main/resources
+│   └── pom.xml
+│
+├── cloudmenu-web/           # Next.js admin dashboard
+│   ├── app/
+│   ├── lib/
+│   ├── public/
+│   ├── package.json
+│   └── next.config.ts
+│
+├── cloudmenu-mobile/        # Expo / React Native customer app
+│   ├── app/                 # Expo Router screens
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── features/        # Redux slices
+│   │   ├── hooks/
+│   │   ├── navigation/
+│   │   ├── store/
+│   │   └── utils/
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── .gitignore
+└── README.md
 
-REST API integration
+🧠 System Architecture
 
-🔐 Authentication & Security
+        ┌────────────┐
+        │   Customer │
+        │  Mobile App│
+        │ (Expo RN)  │
+        └─────┬──────┘
+              │ REST APIs
+              ▼
+        ┌────────────┐
+        │ Spring Boot│
+        │   Backend  │
+        │ (Business  │
+        │   Logic)   │
+        └─────┬──────┘
+              │ JPA / Hibernate
+              ▼
+        ┌────────────┐
+        │   MySQL    │
+        │  Database  │
+        └────────────┘
+              ▲
+              │ REST APIs
+        ┌─────┴──────┐
+        │  Admin Web │
+        │  Dashboard │
+        │  (Next.js) │
+        └────────────┘
+🔄 Application Flow (High Level)
 
-JWT-based authentication
+Customer scans QR code
+Mobile app loads menu from backend
+Customer adds items and places order
+Backend stores order in MySQL
+Admin dashboard fetches live orders
+Admin updates order status
+Customer sees updated order status
 
-Role-based access control (Admin / Restaurant / Customer)
+⚙️ Prerequisites
 
-Secured REST endpoints using Spring Security
-
-📊 Real-Time Features
-
-Live order updates for kitchen & admin dashboard
-
-Server-Sent Events (SSE) / WebSocket integration
-
-Instant UI updates without page refresh
-
-🚀 Getting Started (Local Setup)
-Prerequisites
+Install the following before running the project:
 
 Java 17+
-
-Node.js 18+
-
-MySQL
-
 Maven
+Node.js 18+
+npm
+MySQL 8+
+Git
+VS Code
+Expo CLI
+Install Expo CLI:
+npm install -g expo-cli
 
-🔧 Backend Setup
+
+ Backend Setup (Spring Boot)
+1️ Navigate to backend
+
 cd cloudmenu-backend
-./mvnw spring-boot:run
 
+2️ Create MySQL Database
+CREATE DATABASE cloudmenu;
 
-Update application.properties with:
+3 Run Backend
+mvn spring-boot:run
 
-Database credentials
+4 Backend URL
+http://localhost:8080
 
-JWT secret
-
-Server port
-
-🎨 Frontend Setup
+🌐 Web App Setup (Next.js – Admin Dashboard)
+1️⃣ Navigate to web app
 cd cloudmenu-web
+
+2️⃣ Install dependencies
 npm install
+
+3️⃣ Configure Environment Variables
+
+Create .env.local:
+
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
+
+4️⃣ Run Web App
 npm run dev
 
 
-Frontend runs on:
+Web app runs at:
 
 http://localhost:3000
 
-🌱 Environment Variables
+📱 Mobile App Setup (Expo – Customer App)
+1️⃣ Navigate to mobile app
+cd cloudmenu-mobile
 
-Backend:
+2️⃣ Install dependencies
+npm install
 
-DB_URL
-DB_USERNAME
-DB_PASSWORD
-JWT_SECRET
+3️⃣ Configure Environment Variables
+
+Create .env:
+
+EXPO_PUBLIC_API_BASE_URL=http://localhost:8080
+
+4️⃣ Start Expo
+npx expo start
 
 
-Frontend:
+Run using:
 
-NEXT_PUBLIC_API_BASE_URL
+Expo Go (scan QR)
 
-📌 Use Cases
+Android Emulator
 
-Cafes & restaurants replacing paper menus
+iOS Simulator (Mac)
 
-Quick-service restaurants (QSRs)
+▶️ Recommended Execution Order
 
-Small to mid-scale dining businesses
+Start MySQL
 
-Digital ordering without POS dependency
+Run Spring Boot backend
+Run Next.js web app
+Run Expo mobile app
 
-🧠 Learning & Design Focus
+🧩 Redux Architecture (Mobile)
 
-Clean REST API design
+features/ → Redux slices (cart, menu, order)
+store/ → Root reducer & store config
+hooks/ → Typed Redux hooks
+api/ → API abstraction layer
 
-Layered architecture (Controller → Service → Repository)
+State flow:
 
-DTO-based data transfer
+UI → Redux Action → Slice → API → Backend → Store → UI
 
-Scalable monorepo structure
+🔐 Environment & Security
+.env files are ignored
+node_modules excluded
+Database credentials not committed
+API URLs configurable per environment
 
-Production-ready backend practices
+❗ Common Issues & Fixes
+Expo not found
+npm install -g expo-cli
+
+Port already in use
+npx expo start --port 19001
+
+MySQL connection error
+
+Ensure MySQL is running
+
+Check username/password
+
+Verify database exists
+
+
+📈 Future Enhancements
+
+Payment gateway integration
+Cloud deployment (AWS / Render)
+CI/CD pipelines
+
+
